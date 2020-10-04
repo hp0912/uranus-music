@@ -11,5 +11,5 @@ RUN npm run build
 
 FROM nginx
 
-COPY --from=build /app/build /app
+COPY --from=build /app/dist /app
 COPY --from=build /app/nginx/default.conf /etc/nginx/conf.d/default.conf
