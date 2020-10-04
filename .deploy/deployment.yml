@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uranus-music
+spec:
+  selector:
+    matchLabels:
+      app: uranus-music
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: uranus-music
+    spec:
+      containers:
+      - name: uranus-music
+        image: registry.cn-shenzhen.aliyuncs.com/houhou/uranus-music:{TAG}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /favicon.ico
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /favicon.ico
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 60m
+            memory: 300Mi
+          requests:
+            cpu: 30m
+            memory: 100Mi
