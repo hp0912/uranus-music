@@ -73,8 +73,10 @@
         <a
           href="https://github.com/ix64/unlock-music/blob/master/README.md"
           target="_blank"
-          >吼吼～</a
-        >。
+        >
+          更多 </a
+        >。&nbsp;&nbsp;&nbsp;
+        <a href="/"> 返回吼吼的博客</a>
       </el-row>
       <el-row>
         <!--如果进行二次开发，此行版权信息不得移除且应明显地标注于页面上-->
